@@ -28,8 +28,7 @@ This website showcases information from NASA's APIs, including the Astronomy Pic
 - **Responsive Design**: Ensures the website looks great on all devices.
 - **Minimalistic Theme**: Inspired by Apple’s design principles with a focus on simplicity and usability.
 
-![APOD Example](./assets/images/apod-example.png)
-*An example of the Astronomy Picture of the Day section.*
+
 
 ## Getting Started
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
