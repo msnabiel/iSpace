@@ -7,7 +7,7 @@ function SpaceWeather() {
   const apiKey = process.env.REACT_APP_NASA_API_KEY;
 
   useEffect(() => {
-    axios.get(`https://api.nasa.gov/DONKI/notifications?startDate=2023-01-01&endDate=2023-12-31&type=all&api_key=${apiKey}`)
+    axios.get(`https://api.nasa.gov/DONKI/notifications?startDate=2023-01-01&endDate=2023-12-31&type=all&api_key=9fVK0Pkapy4dYUiP8HBZ8OK5CBh9cpaWZMfZpixy`)
       .then(response => setSpaceWeather(response.data))
       .catch(error => console.error('Error fetching data:', error));
   }, [apiKey]);
