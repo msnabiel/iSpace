@@ -1,32 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import SpaceWeather from './components/SpaceWeather';
+import Home from './components/Home';
+import Settings from './components/Settings';
 import './styles.css';
+import Photo from './components/Photo';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [pages, setPages] = useState([
+    { name: 'Home', path: '/' },
+    { name: 'Space Weather', path: '/space-weather' },
+    { name: 'Photo of the Day', path: '/POTD' }
+  ]);
 
-  useEffect(() => {
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=9fVK0Pkapy4dYUiP8HBZ8OK5CBh9cpaWZMfZpixy`)
-      .then(response => response.json())
-      .then(data => setData(data));
-  }, []);
+  const addPage = (name, path) => {
+    setPages([...pages, { name, path }]);
+  };
 
   return (
-    <div className="App">
-      {data ? (
-        <div className="content">
-          <h1>🌌 {data.title}</h1>
-          <img src={data.url} alt={data.title} />
-          <p>{data.explanation}</p>
-          <footer>
-            <p>🛰️ Data provided by NASA's APOD API</p>
-            <p>✨ Designed by Syed Nabiel Hasaan M.</p>
-          </footer>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        <nav className="menu">
+          <ul>
+            {pages.map((page, index) => (
+              <li key={index}>
+                <Link to={page.path}>{page.name}</Link>
+              </li>
+            ))}
+            <li>
+              <Link to="/settings">⚙️ Settings</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/space-weather" element={<SpaceWeather />} />
+          <Route path='/POTD' element={<Photo />} />
+          <Route path="/settings" element={<Settings addPage={addPage} />} />
+          {/* Add more dynamic routes here */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
