@@ -1,0 +1,20 @@
+.settings input {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+  }
+  
+  .settings button {
+    padding: 10px 20px;
+    background-color: #007aff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .settings button:hover {
+    background-color: #005ec2;
+  }
+  
